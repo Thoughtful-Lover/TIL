@@ -13,9 +13,13 @@
 
 N = int(input())
 
-num = N
+if N == 0: # 0! = 1
+    N = 1
 
-for i in range(N):
-    num *= (num-i)
+else:
+    num = N
+
+    for i in range(1, N): # 1 ~ N-1 까지의 수를 곱해간다.
+        N *= (num-i)
 
 print(N)

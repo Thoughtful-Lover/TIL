@@ -27,4 +27,4 @@ B = int(input())
 print(A * (B % 10)) # A * (B의 일의 자리수)
 print(A * ((B // 10)%10)) # A * (B의 십의 자리수)
 print(A * (B//100)) # A * (B의 백의 자리수)
-print(A * B) # A * B의 결과값
+print(A * B) # A * B의 결과값240202
