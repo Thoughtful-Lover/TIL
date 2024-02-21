@@ -11,10 +11,10 @@
 
 
 def preorder(n):
-    while True:
+    while n <= N:
         print(tv[n], end='')
-        preorder(tv.index(left[n]))
-        preorder(tv.index(right[n]))
+        preorder(ord(left[n])-64)
+        preorder(ord(right[n])-64)
 
 # def inorder(n):
 # def postorder(n):
@@ -28,12 +28,14 @@ tv = [0] * (N+1)
 
 for i in range(1, N+1):
     info = list(sys.stdin.readline())
-    info.remove('.')
+    if '.' in info:
+        info.remove('.')
 
     tv[i] = info[0]
     if len(info) >= 2:
         left[i] = info[1]
     if len(info) == 3:
         right[i] = info[2]
+print(tv)
 
 preorder(1)

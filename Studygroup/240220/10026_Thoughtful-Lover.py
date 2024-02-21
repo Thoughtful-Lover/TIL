@@ -23,22 +23,21 @@ import sys
 
 def section(ii, jj):
     color = pic[ii][jj]
+    pic[ii][jj] = -1
 
-    while 0 <= ii < N and 0 <= jj < N:
-        if pic[ii][jj] == color:
-            pic[ii][jj] = -1
-        for di, dj in [0, 1], [1, 0], [0, -1], [-1, 0]:
-            ii += di
-            jj += dj
+    for di, dj in [0, 1], [1, 0], [0, -1], [-1, 0]:
+        ni = ii + di
+        nj = jj + dj
 
-            if pic[ii][jj] == color:
-                pic[ii][jj] = -1
+        while 0 <= ni < N and 0 <= nj < N and pic[ii][jj] == color:
+            if pic[ni][nj] == color:
+                    pic[ni][nj] = -1
+            else: break
 
     global count
     count += 1
 
-    if:
-        section(ii, jj)
+    section(ni, nj)
 
 
 N = int(sys.stdin.readline())
@@ -46,3 +45,5 @@ pic = [list(sys.stdin.readline()) for _ in range(N)]
 count = 0
 
 section(0, 0)
+
+print(count)
