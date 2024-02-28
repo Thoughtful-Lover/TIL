@@ -83,10 +83,11 @@ print(cnt)'''
 
 
 # 회의실에서 회의를 최대한 얼마나 할 수 있는지를 세는 함수 how_many_meeting 를 정의
-def how_many_meetings(n):
+def how_many_meetings():
     global cnt
     # cnt 를 1 증가
     cnt += 1
+    n = 0
 
     # 전체 회의를 순회하며 종료한 회의의 종료시간보다 시작시간이 늦으면 해당 회의를 선택함
     # 이때 종료한 회의 다음 시작 시간 중 가장 종료 시간이 빠른 회의를 선택하게 됨
@@ -109,6 +110,6 @@ for j in range(N):
 meeting_list.sort(key=lambda x: x[1])
 
 # 초기 값으로 회의 종료 시간이 가장 빠른 회의를 시작
-how_many_meetings(0)
+how_many_meetings()
 
 print(cnt)
