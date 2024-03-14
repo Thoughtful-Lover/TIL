@@ -27,4 +27,68 @@
 ( 0은 청소 안됨, 1은 청소됨 )
 
 청소기가 멈출 때까지 청소하는 칸의 개수는?
-''
+'''
+
+
+# 청소를 하는 함수 cleaning 을 정의
+def cleaning(space, y, x, dir):
+    # 청소하는 칸의 개수를 저장할 변수 cleaning_zone 을 정
+    cleaning_zone = 0
+
+    # 각각의 수에 해당하는 델타를 정의 : 북, 동, 남, 서
+    di = [-1, 0, 1, 0]
+    dj = [0, 1, 0, -1]
+
+    # 종료조건은
+    while True:
+        # 만약 현재 위치에 청소가 안되어 있다면 현재 위치를 청소하고 청소 횟수를 1 증가
+        if space[y][x] == 0:
+            space[y][x] = 2
+            cleaning_zone += 1
+
+        # 위치를 이동했는지 여부를 저장할 변수 moved
+        moved = 0
+
+        # 먼저 4방향을 둘러보며 청소 안된 위치가 있는지 확인
+        for _ in range(4):
+            # 90도씩 반시계 방향으로 돌리되 인덱스 값이 마이너스가 되면 안되니까 4를 더해주고 4로 나눈 값의 몫을 구함
+            dir = (dir-1+4)%4
+            ni = y + di[dir]
+            nj = x + dj[dir]
+            # 만약 바라보는 방향의 값이 방의 범위를 벗어나지 않고 청소가 되지 않은 상태라면
+            if 0<=ni<N and 0<=nj<M and space[ni][nj] == 0:
+                # 위치 정보를 갱신하고 위치를 옮겼다는 표시를 해줌
+                y = ni
+                x = nj
+                moved = 1
+                break
+
+        # 만약 위의 결과에서 위치를 옮겼다면 청소하러 돌아감
+        if moved == 1:
+            continue
+
+        # 만약 위에서 위치를 옮기지 못했다면 후진
+        y -= di[dir]
+        x -= dj[dir]
+
+        # 후진한 위치가 방이면 청소하러 돌아감
+        if 0<=y<N and 0<=x<M and space[y][x] != 1:
+            continue
+        # 벽에 부딪혔다면 멈춤
+        break
+
+    return cleaning_zone
+
+
+N, M = map(int, input().split())
+r, c, d = map(int, input().split())
+room = [list(map(int, input().split())) for _ in range(N)]
+
+print(cleaning(room, r, c, d))
+
+'''
+1. break와 continue를 적절하게 섞어서 이용하는게 헷깔렸다.
+2. 오랜만에 푸니까 좌표랑 인덱스값이랑 x,y / i,j 가 헷깔렸다.
+3. 처음에 90도씩 반시계로 회전할 때 k in range(5) 이런 식으로 했는데 그렇게 하니까 갱신된 위치에서 두 칸 옮기고, 갱신된 위치에서 3칸 옮기가 이런식으로 되서 망함
+4. 1이 있는 위치가 청소가 되어 있는 위치가 아니라 벽이었다니!!
+'''
