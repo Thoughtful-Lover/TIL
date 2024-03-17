@@ -8,6 +8,11 @@ N*M 크기의 연구소
 바이러스가 퍼질 수 없는 안전 영역의 최대값
 '''
 
+'''
+뭔가 벽을 세우는 모든 경우의 수를 하고
+바이러스 입장에서 막힐 때까지 길을 찾아가보면 어떨까
+'''
+
 
 N, M = map(int, input().split())
 lab = [list(map(int, input().split())) for _ in range(N)]
