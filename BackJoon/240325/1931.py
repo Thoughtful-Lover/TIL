@@ -110,7 +110,7 @@ for j in range(N):
     meeting_list[j] = (s, t)
 
 # 종료 시간이 빠른 순으로 정렬하되 종료 시간이 같으면 시작 시간이 빠른 순으로 정렬
-# lambda에 x[0]를 추가해주는게 핵심이었음
+# lambda에 x[0]를 추가해주는게 핵심이었
 meeting_list.sort(key=lambda x: (x[1], x[0]))
 
 # 초기 값으로 회의 종료 시간이 가장 빠른 회의를 시작
