@@ -93,3 +93,28 @@ PN = 'IO'*N+'I'
 print(re.findall(PN, S))
 ```
 * 이것도 중첩되는 문자열을 못 찾는다...
+* KMP 알고리즘 그냥 개념은 배웠는데 한 번 구현해보려고..
+### 5차 시도
+```python
+
+
+def makeTable(target_string):
+  table = [0]*len(target_string)
+  sp = 0
+  for ep in range(1, len(target_string)):
+    
+  return table
+
+
+def KMP():
+  pass
+
+
+N = int(input())
+M = int(input())
+S = input()
+# N+1개의 I와 N개의 O로 이루어진 수 N
+PN = 'IO'*N+'I'
+
+tb = makeTable(PN)
+```
