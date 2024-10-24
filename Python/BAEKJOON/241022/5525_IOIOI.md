@@ -96,8 +96,6 @@ print(re.findall(PN, S))
 * KMP 알고리즘 그냥 개념은 배웠는데 한 번 구현해보려고..
 ### 5차 시도
 ```python
-
-
 def makeTable(target_string):
   table = [0]*len(target_string)
   sp = 0
