@@ -5,9 +5,13 @@ cnt = 0
 delta = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 y, x = (0, 0)
 idx = 0
+is_turned = False
 while True:
     ny, nx = y+delta[idx%4][0], x+delta[idx%4][1]
-    if 0<=ny<M and 0<nx<N and not graph[ny][nx]:
+    if 0<=ny<M and 0<=nx<N and not graph[ny][nx]:
+        if is_turned:
+            cnt += 1
+            is_turned = False
         graph[ny][nx] = 1
         y, x = ny, nx
     # rotate 해야 되는데 rotate할 때 조건
